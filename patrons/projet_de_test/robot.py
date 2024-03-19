@@ -66,7 +66,3 @@ class MyRobot(wpilib.TimedRobot):
 
     def testPeriodic(self):
         """Cette fonction est appelée de façon périodique lors du mode test."""
-
-
-if __name__ == "__main__":
-    wpilib.run(MyRobot)

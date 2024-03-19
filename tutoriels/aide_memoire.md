@@ -1,22 +1,13 @@
 # Aide Mémoire
 
-NB: Sur windows, remplacez `python3 ...` par `py -3 ...`
-
 ## Déploiement
 ### Commande pour déployer le code avec netconsole
 Ouvrir un terminal au projet et exécuter
-`python robot.py deploy --nc `
+`robotpy deploy --nc `
 
 ### Rajouter une librairie
-Connecté à Internet
+Modifier le fichier `pyproject.toml` selon vos besoins.
 
-`python3 -m pip install robotpy-<nom_de_la_librairie>`
+Connecté à Internet, exécutez `robotpy sync`
 
-Et connecté sur votre robot
-
-`robotpy-installer install robotpy-<nom_de_la_librairie>`
-
-
-## Programmation
-### Importer une librairie
-`import <nom_de_la_librairie>`
+Puis connecté à votre robot, exécutez `robotpy deploy`

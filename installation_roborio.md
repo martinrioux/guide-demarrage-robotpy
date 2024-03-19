@@ -14,56 +14,17 @@ Le robot n'est généralement pas capable de se connecter à internet. Il faut d
 
 Si le terminal vous demande votre numéro d'équipe, saisissez-le. Cette information permet de trouver votre roboRIO sur le réseau.
 
-### Installation de Python sur le roboRIO
+### Installation de Python sur le roboRIO et mise à jours
 
 Ouvrez un terminal (Powershell sur Windows) et écrivez les commandes suivantes:
 
 ```shell
-# Pour Windows
 #  Connecté sur internet
-py -3 -m robotpy-installer download-python
+robotpy sync
 #  Puis connecté sur le robot
-py -3 -m robotpy-installer install-python
-
-# Pour Linux et macOS
-#  Connecté sur internet
-robotpy-installer download-python
-#  Puis connecté sur le robot
-robotpy-installer install-python
+robotpy deploy
 ```
 
-### Installation (ou mise à jour) de RobotPy sur le roboRIO
-
-Ouvrez un terminal (Powershell sur Windows) et écrivez les commandes suivantes:
-
-```shell
-# Pour Windows
-#  Connecté sur internet
-py -3 -m robotpy-installer download robotpy[all]
-#  Puis connecté sur le robot
-py -3 -m robotpy-installer install robotpy[all]
-
-# Pour Linux et macOS
-#  Connecté sur internet
-robotpy-installer download robotpy[all]
-#  Puis connecté sur le robot
-robotpy-installer install robotpy[all]
-```
+**NOTE**: Pour activer ou désactiver des modules (Ex.: ctre, rev, navx), ajoutez ou retirez les de la liste `robotpy_extras` du fichier `pyproject.toml` de votre projet.
 
 Une fois tout installé, validez le bon fonctionnement par le [Projet de Test](/patrons/projet_de_test/README.md)
-
-Dans le cas où la commande `robotpy-installer install robotpy[all]` vous retourne une erreur de type `MemoryError`, c'est le roboRIO qui manque de place.
-
-Recommencez la dernière commande en spécifiant les modules à installer plutôt que de tout installer. La liste suggérée est:
-
-```shell
-# Pour Windows, connecté sur le robot
-py -3 -m robotpy-installer install robotpy robotpy-apriltag robotpy-commands-v2 robotpy-rev robotpy-navx robotpy-ctre
-
-# Pour Linux et macOS, connecté sur le robot
-robotpy-installer install robotpy robotpy-apriltag robotpy-commands-v2 robotpy-rev robotpy-navx robotpy-ctre
-```
-
-Si par la suite vous voulez installer une nouvelle librairie, simplement exécuter `robotpy-installer install nom_du_module`
-
-[Voir les modules populaires](/installation_ordinateur.md#gestion-des-modules-robotpy)

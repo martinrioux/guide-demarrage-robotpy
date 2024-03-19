@@ -47,11 +47,7 @@ Afin de téléverser votre code dans le robot, le plus simple et d'ouvrir un ter
 Une nouvelle fenêtre va apparaitre dans le bas de l'éditeur. Dans cette dernière, écrire la commande suivante:
 
 ```shell
-# Pour Windows
-py -3 robot.py
-
-# Pour Linux et macOS
-python3 robot.py
+robotpy
 ```
 
 ![alt text](/media/terminal-1.png "Terminal 1")

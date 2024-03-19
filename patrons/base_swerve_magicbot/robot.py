@@ -147,7 +147,3 @@ class MyRobot(MagicRobot):
     def update_nt(self):
         """Affiche les données sur le ShuffleBoard"""
         pass
-
-
-if __name__ == "__main__":
-    wpilib.run(MyRobot)

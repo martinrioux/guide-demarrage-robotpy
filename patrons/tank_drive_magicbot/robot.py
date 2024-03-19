@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
 
 """
-Example création d'un composante ('component')
+Base de code Tank Drive + demo component
 """
 
-import rev
 import wpilib
-from components import convoyeur_driver  # Le fichier avec notre component
+from components import demo_component, tank_drive
 from magicbot import MagicRobot
+import constants
 
 
 class MyRobot(MagicRobot):
     """
-    Après avoir créer notre composante 'convoyeur_driver' de bas niveau dans './components/convoyeur_driver.py',
+    Après avoir créer notre composante 'demo_component' de bas niveau dans './components/demo_component.py',
     utiliser leur nom suivi d'un trait souligné (_) pour injecter des objets au composantes.
 
     Utilisez le signe = dans la fonction 'createObjects' pour vous assurer que les données sont biens transmises à leur composantes.
@@ -21,16 +21,17 @@ class MyRobot(MagicRobot):
     """
 
     # Ici on définie l'objet qui nous permet d'interragir avec le component
-    convoyeur: convoyeur_driver.Convoyeur
+    demo_component: demo_component.DemoComponent
+    drivetrain: tank_drive.TankDrive
 
     def createObjects(self):
         """
         C'est ici que les composants sont vraiment créé avec le signe =.
-        Les composants avec un préfix connu tel que "convoyeur_" vont être injectés.
+        Les composants avec un préfix connu tel que "drivetrain_" vont être injectés.
         """
-        self.convoyeur_config = convoyeur_driver.ConvoyeurConfig(inverser_convoyeur=False)
-        self.convoyeur_moteur = rev.CANSparkMax(5, rev.CANSparkMax.MotorType.kBrushless)
-        self.convoyeur_actuateur = wpilib.DigitalInput(0)
+        # Injection des moteurs dans le drivetrain
+        self.drivetrain_left_motor = wpilib.PWMMotorController("left_motor", constants.PWM_TANK_DRIVE_LEFT)
+        self.drivetrain_right_motor = wpilib.PWMMotorController("right_motor", constants.PWM_TANK_DRIVE_RIGHT)
 
         # General
         self.gamepad1 = wpilib.XboxController(0)
@@ -53,6 +54,7 @@ class MyRobot(MagicRobot):
 
     def teleopPeriodic(self):
         """Cette fonction est appelée de façon périodique lors du mode téléopéré."""
-        # Forcer le convoyeur à tourner
+        self.drivetrain.controller_move(self.gamepad1.getLeftY(), self.gamepad1.getRightY())
+
         if self.gamepad1.getAButton():
-            self.convoyeur.forcer_a_tourner()
+            self.demo_component.set_speed(1)

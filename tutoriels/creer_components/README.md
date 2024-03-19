@@ -2,7 +2,7 @@
 
 Le code inclus un example de création d'un composant simple.
 
-Dans ce cas ci, supossont que nous voulons rajouter un covoyeur qui dés qu'un actuateur est actionné.
+Dans ce cas ci, supossont que nous voulons rajouter un covoyeur qui stop dès qu'un actuateur est actionné (objet présent).
 
 La première étape est de créer un fichier pour cette composante dans `./components/convoyeur_driver.py`.
 

@@ -1,0 +1,3 @@
+
+LEFT_MOTOR = 0
+RIGHT_MOTOR = 1

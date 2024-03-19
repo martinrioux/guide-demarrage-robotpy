@@ -37,16 +37,16 @@ Ouvrez un terminal (Powershell sur Windows) et écrivez les commandes suivantes:
 
 ```shell
 # Pour Windows
-py -3 -m pip install robotpy[all]
+py -3 -m pip install robotpy
 
 # Pour Windows si vous n'avez pas les droits administrateur
-py -3 -m pip install --user robotpy[all]
+py -3 -m pip install --user robotpy[
 
 # Pour Linux et macOS
-pip3 install robotpy[all]
+pip3 install robotpy
 
 # Pour Linux et macOS si vous n'avez pas les droits administrateur
-pip3 install --user robotpy[all]
+pip3 install --user robotpy
 
 ```
 
@@ -56,42 +56,14 @@ Vous pouvez maintenant poursuivre avec l'[Installation sur le roboRIO](/installa
 
 ## Mettre à jours RobotPy
 
+Ajustez le fichier `pyproject.toml` de votre projet selon vos besoins.
+
 Ouvrez un terminal (Powershell sur Windows) et écrivez les commandes suivantes:
 
 ```shell
-# Pour Windows
-py -3 -m pip install --upgrade robotpy[all]
-
-# Pour Linux et macOS
-pip3 install --upgrade robotpy[all]
+robotpy sync
 ```
 
-## Gestion des modules robotpy-*
+Le RoboRIO sera mis à jours à la prochaine commande `robotpy deploy`
 
-Lorsque l'on spécifie `[all]`, robotpy est installé ainsi que tout les modules associés. Il est cependant possible d'installer ces derniers de façon plus individuelle. Par exemple, pour installer seulement robotpy et les modules de REV et de CTRE:
-
-```shell
-# Pour Windows
-py -3 -m pip install robotpy robotpy-rev robotpy-ctre
-
-# Pour Linux et macOS
-pip3 install robotpy robotpy-rev robotpy-ctre
-```
-
-Voici une brève liste de modules populaires
-
-Modules de compagnies:
-
-- ``ctre`` - Pour le matériel de Cross The Road Electronics
-- ``rev`` - Pour le matériel de REV Robotics
-- ``navx`` - Pour le  NavX de Kauai Labs
-- ``photonvision`` - Librarie de vision PhotonVision
-- ``pathplannerlib`` - Librarie de "path planning" PathPlannerLib
-
-Modules de WPILib:
-
-- ``apriltag`` - WPILib apriltag library
-- ``commands2`` - WPILib Commands framework (2020+)
-- ``cscore`` - WPILib cscore library
-- ``romi`` - Romi robot specific components
-- ``sim`` - WPILib extra simulation support
+**NOTE**: Pour activer ou désactiver des modules (Ex.: ctre, rev, navx), ajoutez ou retirez les de la liste `robotpy_extras` du fichier `pyproject.toml` de votre projet.
